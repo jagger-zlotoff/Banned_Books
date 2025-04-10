@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BannedBooks.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+
+
 
 namespace BannedBooks.Data;
 
@@ -10,6 +13,9 @@ public class BannedBooksContext : IdentityDbContext<IdentityUser>
         : base(options)
     {
     }
+
+    public DbSet<Book> Books { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

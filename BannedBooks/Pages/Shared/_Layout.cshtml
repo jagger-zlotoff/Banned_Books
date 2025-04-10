@@ -29,8 +29,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Books/Index">Books</a>
+                        </li>
                     </ul>
-
                     <!-- 👇 Login/Register or Logout/User Info goes here -->
                     <ul class="navbar-nav">
                         @if (SignInManager.IsSignedIn(User))

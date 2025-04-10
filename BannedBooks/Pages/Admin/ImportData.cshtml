@@ -1,0 +1,16 @@
+﻿@page
+@model BannedBooks.Pages.Admin.ImportDataModel
+@{
+	ViewData["Title"] = "Import CSV Data";
+}
+
+<h2>Import CSV Data</h2>
+
+<form method="post">
+    <button type="submit" class="btn btn-primary">Import CSV Data</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success mt-3">@Model.Message</div>
+}
