@@ -31,6 +31,9 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/Books");
 });
 
+// Register AiService using HttpClient
+builder.Services.AddHttpClient<BannedBooks.Services.AiService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BannedBooks.Data;
 using BannedBooks.Models;
 using Microsoft.AspNetCore.Authorization;
+using BannedBooks.Services;
 
 namespace BannedBooks.Pages.Books
 {
@@ -15,30 +16,25 @@ namespace BannedBooks.Pages.Books
     public class DetailsModel : PageModel
     {
         private readonly BannedBooks.Data.BannedBooksContext _context;
+        private readonly AiService _aiService;
 
-        public DetailsModel(BannedBooks.Data.BannedBooksContext context)
+        public DetailsModel(BannedBooks.Data.BannedBooksContext context, AiService aiService)
         {
             _context = context;
+            _aiService = aiService;
         }
 
         public Book Book { get; set; } = default!;
+        public string AiResult { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            Book = await _context.Books.FindAsync(id);
+            if (Book == null) return NotFound();
 
-            var book = await _context.Books.FirstOrDefaultAsync(m => m.Id == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Book = book;
-            }
+            // Call the AI service to classify the description.
+            AiResult = await _aiService.GetClassificationAsync(Book.Description);
+
             return Page();
         }
     }
