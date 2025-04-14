@@ -30,7 +30,7 @@ namespace BannedBooks.Pages.Admin
         {
             try
             {
-                var filePath = Path.Combine(_env.ContentRootPath, "Areas", "Identity", "Data", "PEN Americas Index of School Book Bans.csv");
+                var filePath = Path.Combine(_env.ContentRootPath, "Areas", "Identity", "Data", "merged_dataset.csv");
 
                 // Use the CSV importer to import data.
                 var importer = new CsvImporter(_context);

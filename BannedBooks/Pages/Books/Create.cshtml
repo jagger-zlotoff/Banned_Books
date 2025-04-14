@@ -25,14 +25,9 @@
                 <span asp-validation-for="Book.Author" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.State" class="control-label"></label>
-                <input asp-for="Book.State" class="form-control" />
-                <span asp-validation-for="Book.State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Book.District" class="control-label"></label>
-                <input asp-for="Book.District" class="form-control" />
-                <span asp-validation-for="Book.District" class="text-danger"></span>
+                <label asp-for="Book.Genre" class="control-label"></label>
+                <input asp-for="Book.Genre" class="form-control" />
+                <span asp-validation-for="Book.Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Reason" class="control-label"></label>
@@ -43,11 +38,6 @@
                 <label asp-for="Book.Description" class="control-label"></label>
                 <textarea asp-for="Book.Description" class="form-control"></textarea>
                 <span asp-validation-for="Book.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Book.DateOfBan" class="control-label"></label>
-                <input asp-for="Book.DateOfBan" class="form-control" />
-                <span asp-validation-for="Book.DateOfBan" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

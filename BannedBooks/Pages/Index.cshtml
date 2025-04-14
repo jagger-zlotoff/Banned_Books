@@ -24,10 +24,9 @@
             <tr>
                 <th>Title</th>
                 <th>Author</th>
-                <th>State</th>
-                <th>District</th>
+                <th>Genre</th>
                 <th>Reason</th>
-                <th>Date of Ban</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -36,10 +35,9 @@
                 <tr>
                     <td>@book.Title</td>
                     <td>@book.Author</td>
-                    <td>@book.State</td>
-                    <td>@book.District</td>
+                    <td>@book.Genre</td>
                     <td>@book.Reason</td>
-                    <td>@(book.DateOfBan?.ToString("MM/dd/yyyy") ?? "N/A")</td>
+                    <td>@book.Description</td>
                 </tr>
             }
         </tbody>

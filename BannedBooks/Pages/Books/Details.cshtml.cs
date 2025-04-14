@@ -27,14 +27,16 @@ namespace BannedBooks.Pages.Books
         public Book Book { get; set; } = default!;
         public string AiResult { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             Book = await _context.Books.FindAsync(id);
-            if (Book == null) return NotFound();
+            if (Book == null)
+            {
+                return NotFound();
+            }
 
-            // Call the AI service to classify the description.
-            AiResult = await _aiService.GetClassificationAsync(Book.Description);
-
+            // Classify the book description on demand
+            AiResult = await _aiService.GetClassificationAsync(Book.Description ?? "");
             return Page();
         }
     }

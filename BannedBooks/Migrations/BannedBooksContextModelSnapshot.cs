@@ -34,30 +34,18 @@ namespace BannedBooks.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DateOfBan")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("District")
+                    b.Property<string>("Genre")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Illustrator")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<bool>("IsBanned")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("SecondaryAuthor")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -65,12 +53,7 @@ namespace BannedBooks.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Translator")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

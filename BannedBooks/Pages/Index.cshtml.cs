@@ -22,23 +22,24 @@ namespace BannedBooks.Pages
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
-        // The list of books we show in the table
+        // The list of books to display in the table
         public IList<Book> Book { get; set; }
 
         public async Task OnGetAsync()
         {
-            // Base query for all books
-            var query = _context.Books.AsQueryable();
-
-            // If user typed something, filter by Title or Author
-            if (!string.IsNullOrEmpty(SearchTerm))
+            if (string.IsNullOrEmpty(SearchTerm))
             {
-                query = query.Where(b =>
-                    b.Title.Contains(SearchTerm) ||
-                    b.Author.Contains(SearchTerm));
+                // No search term provided: return an empty list so nothing is displayed.
+                Book = new List<Book>();
             }
+            else
+            {
+                // Filter by Title or Author when a search term is provided
+                var query = _context.Books
+                    .Where(b => b.Title.Contains(SearchTerm) || b.Author.Contains(SearchTerm));
 
-            Book = await query.ToListAsync();
+                Book = await query.ToListAsync();
+            }
         }
     }
 }
