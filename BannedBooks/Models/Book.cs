@@ -22,5 +22,7 @@ namespace BannedBooks.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
+        // New property to hold an embedding (stored as JSON)
+        public string Embedding { get; set; }
     }
 }

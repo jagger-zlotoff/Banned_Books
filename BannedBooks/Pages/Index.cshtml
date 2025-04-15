@@ -1,49 +1,44 @@
 ﻿@page
 @model BannedBooks.Pages.IndexModel
 @{
-    ViewData["Title"] = "Banned Books";
+    ViewData["Title"] = "Banned Books - Smart Search";
 }
 
-<h1 class="display-4">Banned Books</h1>
+<h1 class="display-4">Banned Books - Smart Search</h1>
 
-<!-- Search Bar -->
+<!-- Search Form -->
 <form method="get" class="form-inline justify-content-center mt-4">
-    <input type="text"
-           name="SearchTerm"
-           class="form-control"
-           placeholder="Search by title or author..."
-           value="@Model.SearchTerm" />
+    <input type="text" name="SearchTerm" class="form-control"
+           placeholder="Enter your search query..." value="@Model.SearchTerm" />
     <button type="submit" class="btn btn-primary ml-2">Search</button>
 </form>
 
-<!-- Books List -->
-@if (Model.Book != null && Model.Book.Any())
+@if (Model.SearchResults == null || !Model.SearchResults.Any())
 {
-    <table class="table mt-4">
+    <p class="mt-4">No results found. Please try a different query.</p>
+}
+else
+{
+    <h3 class="mt-4">Search Results</h3>
+    <table class="table">
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Genre</th>
-                <th>Reason</th>
-                <th>Description</th>
+                <th>Similarity</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var book in Model.Book)
+            @foreach (var result in Model.SearchResults)
             {
                 <tr>
-                    <td>@book.Title</td>
-                    <td>@book.Author</td>
-                    <td>@book.Genre</td>
-                    <td>@book.Reason</td>
-                    <td>@book.Description</td>
+                    <td>@result.Book.Title</td>
+                    <td>@result.Book.Author</td>
+                    <td>@result.Book.Genre</td>
+                    <td>@($"{(result.Similarity * 100):F2}%")</td>
                 </tr>
             }
         </tbody>
     </table>
-}
-else
-{
-    <p class="mt-4">No books found.</p>
 }
