@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Overview
 In this project, I developed a web application that allows users to search and analyze a curated database of banned books. The application is built using ASP.NET Core and uses MySQL for its database. AI integration is a key component, consisting of:
 
